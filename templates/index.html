@@ -1,0 +1,33 @@
+{% extends 'layout/base.html' %}
+
+{% block head %}
+<title>Internship Management - TAR UMT</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" />
+{% endblock %}
+
+
+{% block body %}
+<div class="header-bar">
+    <h1>Welcome Back!</h1>
+    <p><a href="#">Home</a></p>
+</div>
+
+<div class="container" id="progress">
+    <h2>Progress</h2>
+    <div class="progress-bar">
+        <div class="progress active">
+            <p>Securing Internship</p>
+        </div>
+        <div class="progress">
+            <p>Secured Internship</p>
+        </div>
+        <div class="progress">
+            <p>In Progress</p>
+        </div>
+        <div class="progress">
+            <p>Completed</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

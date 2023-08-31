@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
+
+    {% block head %}
+
+    {% endblock %}
+</head>
+
+<body>
+    <div class="top-navbar">
+        <div class="logo-holder">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" />
+        </div>
+        <div class="top-content-holder">
+            <div class="notification-holder">
+                <i class="fa-solid fa-bell"></i>
+            </div>
+            <div class="user-information-holder">
+                <div class="user-info">
+                    <p class="user-name">Poh Choo Han</p>
+                    <p class="user-role">Student</p>
+                </div>
+                <div class="user-profile">
+                    <img src="{{ url_for('static', filename='img/profile.jpg') }}" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="side-navbar">
+        <div class="nav-item">
+            <a href="#" class="{% if rule.rule == '/' %} current-page {% endif %}">
+                <div class="nav-left">
+                    <i class="fa-solid fa-table-cells-large "></i>
+                    Dashboard
+                </div>
+                <div class="nav-right">
+                    <i class="fa-solid fa-angle-right"></i>
+                </div>
+            </a>
+        </div>
+        <div class="nav-item">
+            <a href="#">
+                <div class="nav-left">
+                    <i class="fa-solid fa-bullhorn"></i>
+                    Announcement
+                </div>
+                <div class="nav-right">
+                    <i class="fa-solid fa-angle-right"></i>
+                </div>
+            </a>
+        </div>
+        <div class="nav-item sub-nav-trigger">
+            <a href="#" id="internship-info">
+                <div class="nav-left">
+                    <i class="fa-regular fa-file-lines"></i>
+                    Internship Information
+                </div>
+                <div class="nav-right">
+                    <i class="fa-solid fa-angle-right"></i>
+                    <i class="fa-solid fa-angle-down"></i>
+                </div>
+            </a>
+        </div>
+        <div class="nav-item sub-nav" parent-nav="internship-info">
+            <a href="#">
+                <div class="nav-left">
+                    <i class="fa-regular fa-building"></i>
+                    Company List
+                </div>
+                <div class="nav-right">
+                    <i class="fa-solid fa-angle-right"></i>
+                </div>
+            </a>
+        </div>
+        <div class="nav-item sub-nav" parent-nav="internship-info">
+            <a href="#">
+                <div class="nav-left">
+                    <i class="fa-solid fa-user-graduate"></i>
+                    Supervisor
+                </div>
+                <div class="nav-right">
+                    <i class="fa-solid fa-angle-right"></i>
+                </div>
+            </a>
+        </div>
+        <div class="nav-item">
+            <a href="#">
+                <div class="nav-left">
+                    <i class="fa-solid fa-bars-progress"></i>
+                    Progress
+                </div>
+                <div class="nav-right">
+                    <i class="fa-solid fa-angle-right"></i>
+                </div>
+            </a>
+        </div>
+        <div class="nav-item">
+            <a href="#">
+                <div class="nav-left">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    Sign Out
+                </div>
+                <div class="nav-right">
+                    <i class="fa-solid fa-angle-right"></i>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="content">
+        {% block body %}
+        {% endblock %}
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"
+        integrity="sha512-uKQ39gEGiyUJl4AI6L+ekBdGKpGw4xJ55+xyJG7YFlJokPNYegn9KwQ3P8A7aFQAUtUsAQHep+d/lrGqrbPIDQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.sub-nav').hide();
+            $('.sub-nav-trigger a').click(function (e) {
+                e.preventDefault();
+                if ($(this).parent().hasClass('active')) {
+                    $(this).parent().removeClass('active');
+                    $('[parent-nav=' + $(this).attr('id') + ']').hide();
+                }
+                else {
+                    $(this).parent().addClass('active');
+                    $('[parent-nav=' + $(this).attr('id') + ']').show();
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

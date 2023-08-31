@@ -1,0 +1,32 @@
+.progress-bar {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    flex: 1 auto;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-top: 20px;
+}
+
+.progress-bar .progress {
+    width: 25%;
+    text-align: center;
+    padding: 10px 20px;
+    border: 1px solid var(--text);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.progress-bar .progress:last-child {
+    border-radius: 0 100px 100px 0;
+}
+
+.progress-bar .progress:first-child {
+    border-radius: 100px 0px 0px 100px;
+}
+
+.progress-bar .progress.active,
+.progress-bar .progress:hover {
+    color: white;
+    background-color: var(--color1);
+}
